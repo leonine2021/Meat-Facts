@@ -1,0 +1,46 @@
+Product,Category,Feed,Farm,Processing,Transport,Packging,Retail,Total
+Wheat & Rye (Bread),Grain,0,0.8,0.2,0.1,0.1,0.1,1.3
+Maize (Meal),Grain,0,0.5,0.1,0.1,0.1,0,0.8
+Oatmeal,Grain,0,1.4,0,0.1,0.1,0,1.6
+Rice,Grain,0,3.6,0.1,0.1,0.1,0.1,4
+Potatoes,vegetable,0,0.2,0,0.1,0,0,0.3
+Cassava,Grain,0,0.2,0,0.1,0,0,0.3
+Cane Sugar,vegetable,0,0.5,0,0.8,0.1,0,1.4
+Beet Sugar,vegetable,0,0.5,0.2,0.6,0.1,0,1.4
+Other Pulses,vegetable,0,1.1,0,0.1,0.4,0,1.6
+Peas,vegetable,0,0.7,0,0.1,0,0,0.8
+Nuts,Grain,0,2.1,0,0.1,0.1,0,2.3
+Groundnuts,Grain,0,1.4,0.4,0.1,0.1,0,2
+Soymilk,Grain,0,0.1,0.2,0.1,0.1,0.3,0.8
+Tofu,Grain,0,0.5,0.8,0.2,0.2,0.3,2
+Soybean Oil,Grain,0,1.5,0.3,0.3,0.8,0,2.9
+Palm Oil,vegetable,0,2.1,1.3,0.2,0.9,0,4.5
+Sunflower Oil,vegetable,0,2.1,0.2,0.2,0.9,0,3.4
+Rapeseed Oil,vegetable,0,2.3,0.2,0.2,0.8,0,3.5
+Olive Oil,vegetable,0,4.3,0.7,0.5,0.9,0,6.4
+Tomatoes,vegetable,0,0.7,0,0.2,0.1,0,1
+Onions & Leeks,vegetable,0,0.2,0,0.1,0,0,0.3
+Root Vegetables,vegetable,0,0.2,0,0.1,0,0,0.3
+Brassicas,vegetable,0,0.3,0,0.1,0,0,0.4
+Citrus Fruit,Fruit,0,0.3,0,0.1,0,0,0.4
+Bananas,Fruit,0,0.3,0.1,0.3,0.1,0,0.8
+Apples,Fruit,0,0.2,0,0.1,0,0,0.3
+Berries & Grapes,Fruit,0,0.7,0,0.2,0.2,0,1.1
+Dark Chocolate,Grain,0,3.7,0.2,0.1,0.4,0,4.4
+Bovine Meat (beef herd),Meat,1.9,39.4,1.3,0.3,0.2,0.2,43.3
+Bovine Meat (dairy herd),Meat,2.5,15.7,1.1,0.4,0.3,0.2,20.2
+Lamb & Mutton,Meat,2.4,19.5,1.1,0.5,0.3,0.2,24
+Pig Meat,Meat,2.9,1.7,0.3,0.3,0.3,0.2,5.7
+Poultry Meat,Meat,1.8,0.7,0.4,0.3,0.2,0.2,3.6
+Milk,Meat,0.2,1.5,0.1,0.1,0.1,0.3,2.3
+Cheese,Meat,2.3,13.1,0.7,0.1,0.2,0.3,16.7
+Eggs,Meat,2.2,1.3,0,0.1,0.2,0,3.8
+Fish (farmed),Meat,0.8,3.6,0,0.1,0.1,0,4.6
+Crustaceans (farmed),Meat,2.5,8.4,0,0.2,0.3,0.2,11.6
+Cereals & Oilcrops Misc.,Grain,0,0.7,0.2,0.1,0.1,0,1.1
+Sweeteners & Honey,vegetable,0,0,0.1,0.7,0.1,0,0.9
+Stimulants & Spices Misc.,vegetable,0,4.9,0.3,0.1,0.7,0,6
+Animal Fats,Meat,2.4,1.2,0.4,0.3,0.3,0.2,4.8
+Buffalo,Meat,2.2,29,1.2,0.4,0.3,0.2,33.3
+"Butter, Cream & Ghee",Meat,0.2,1.5,0.1,0.1,0.1,0.3,2.3
+Fish & Crustaceans (capture),Meat,0,2.4,0,0.1,0.1,0.1,2.7

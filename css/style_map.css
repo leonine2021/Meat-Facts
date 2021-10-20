@@ -1,0 +1,101 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+
+/*************/
+/*    FORM   */
+/*************/
+
+.form-inline {
+    margin-bottom: 30px;
+}
+
+.form-control {
+    background: #E2DDD1;
+    border: 1px solid #D49999;
+    width: 250px;
+}
+
+.form-group label {
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.form-inline button, .btn-link:active {
+    border-left: 1px solid #888;
+    margin-left: 15px;
+    padding-left: 15px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+}
+.form-inline button:hover, .btn-link:active, .btn-link:focus  {
+    border-left: 1px solid #888;
+    color: #8E7060;
+    text-decoration: none;
+    outline: none;
+}
+.form-inline button .glyphicon {
+    margin-right: 5px;
+}
+
+
+/***************/
+/*  BAR CHART  */
+/***************/
+
+.bar {
+    fill: #8E7060;
+}
+
+.axis {
+    font: 10px sans-serif;
+    fill: #333;
+}
+
+.axis-title {
+    fill: #9C8B83;
+    font-size: 11px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #333;
+    shape-rendering: crispEdges;
+}
+
+.x-axis {
+    font-size: 12px;
+}
+
+.x-axis path {
+    display: none;
+}
+
+.focused {
+    fill: #33CC33;
+}
+
+select {
+    position: absolute;
+    top: 20px;
+    left: 580px;
+    border: solid #ccc 1px;
+    padding: 3px;
+    box-shadow: inset 1px 1px 2px #ddd8dc;
+}
+
+.countryTooltip {
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    background: #fff;
+    padding: 5px;
+    text-align: left;
+    border: solid #ccc 1px;
+    color: #666;
+    font-size: 14px;
+    font-family: sans-serif;
+}

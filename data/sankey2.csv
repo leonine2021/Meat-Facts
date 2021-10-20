@@ -1,0 +1,20 @@
+source,target,value
+Concentrates,Pork,7
+Concentrates,Poultry,7
+Concentrates,Eggs,1
+Concentrates,Dairy,10
+Concentrates,Beef,38
+Processed roughage,Dairy,3
+Processed roughage,Beef,18
+Pasture,Dairy,1
+Pasture,Beef,10
+Pork,Loss,6.4
+Pork,Human consumed protein,0.6
+Poultry,Human consumed protein,1.5
+Poultry,Loss,5.5
+Eggs,Human consumed protein,0.3
+Eggs,Loss,0.7
+Dairy,Human consumed protein,1.3
+Dairy,Loss,12.7
+Beef,Human consumed protein,1
+Beef,Loss,65
