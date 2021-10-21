@@ -11,12 +11,12 @@ body {
 
 /* start nav bar */
 a.navbar-brand {
-  padding: 0 2rem 0 5rem;
+  padding: 1em;
 }
 
-nav.navbar {
-  padding: 1rem 15rem;
-}
+/* nav.navbar {
+  /* padding: 1rem 19rem; */
+} */
 
 a.nav-link {
   text-transform: uppercase;
@@ -52,10 +52,10 @@ a.nav-link {
 
 .site-main .site-banner .row h1 > span {
   display: block;
-  /* font: normal bold 49px/ 60px var(--roboto); */
   text-align: center;
-  padding: 0 24rem;
+  /* padding: 0 20rem; */
   font-size: 60px;
+  transform: translateX(-20px);
 }
 
 section#home {
@@ -68,6 +68,10 @@ section#home {
 }
 
 /* end banner */
+
+/* start monopleth area */
+
+/* end monopleth area */
 
 #methane-vis {
   padding-bottom: 10px;
@@ -84,46 +88,6 @@ section#home {
   background: rgba(255, 255, 255, 0.5);
   max-height: 400px;
   transform: translate(0, 60px);
-}
-
-h6.chart-title {
-  font-size: 20pt;
-}
-
-.example_f {
-  border-radius: 4px !important;
-  background: linear-gradient(to right, #ddf2d8, #43a5cb) !important;
-  border: none !important;
-  color: #ffffff;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 12px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.4s;
-  cursor: pointer;
-  margin: 5px;
-}
-.example_f span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.4s;
-}
-.example_f span:after {
-  content: "\00bb";
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-.example_f:hover span {
-  padding-right: 25px;
-}
-.example_f:hover span:after {
-  opacity: 1;
-  right: 0;
 }
 
 #reset-button {
