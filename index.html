@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Meat Your Worst Nightmare</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/hero-slider.css">
-        <link rel="stylesheet" href="css/templatemo-main.css">
-        <link rel="stylesheet" href="css/owl-carousel.css">
-
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-        <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,400italic,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/fontawesome.min.css">
-        <link rel="stylesheet" href="css/jquery.multiselect.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/style_pie.css">
-        <link rel="stylesheet" href="css/style_map.css">
-
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/jquery.multiselect.css">
+        <!-- <link rel="stylesheet" href="./css/style.css"> -->
     </head>
 
     <body>
+        <!-- =======================start header area ========================= -->
+        <div class="main-menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Meat Facts</a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNav"
+                  aria-controls="navbarNav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <div class="me-auto"></div>
+                  <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home"><span>Home</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#part1"><span>Introduction</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#part2"><span>Emissions</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#part3"><span>Comparison</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#part4"><span>Recommendations</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
 
-        <div class="fixed-side-navbar">
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="#home"><span>Home</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#part1"><span>Introduction</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#part2"><span>Emissions</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#part3"><span>Comparison</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#part4"><span>Recommendations</span></a></li>
-            </ul>
-        </div>
+        <!-- =======================end header area ========================= -->
 
+<!-- =======================start main area ========================= -->
+<main class="site-main">
+<!-- =======================start banner area ========================= -->
         <div class="parallax-content baner-content" id="home">
             <div class="container0">
                 <div class="first-content">
@@ -44,6 +53,8 @@
                 </div>
             </div>
         </div>
+
+         <!-- =======================end banner area ========================= -->
 
         <div class="content-part1" id="part1" style="height: 750px;">
             <div class="container-fluid">
@@ -142,7 +153,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="content-part3" id="part3" style="height: 800px">
             <div class="container-fluid">
@@ -281,8 +291,11 @@
             </div>
         </div>
 
+    </main>
+        <!-- =======================start main area ========================= -->
 
-        <footer style="background-color: #317793";>
+
+        <!-- <footer style="background-color: #317793";>
             <div class="container" style="backgound-color: #ddf2d8">
                 <div class="row">
                     <div class="col-md-12">
@@ -359,16 +372,16 @@
 
                 </div>
             </div>
-        </footer>
+        </footer> -->
 
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <!--  Jquery js file  -->
+        <script src="./js/jquery3.6.0.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
         <script src="https://d3js.org/d3-color.v1.min.js"></script>
         <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-        <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/d3.min.js"></script>
         <script src="js/jquery.min.js"></script>
@@ -383,15 +396,15 @@
         <script src="js/BubbleChart.js"></script>
         <script src="js/PieChart.js"></script>
         <script src="https://d3js.org/d3.v4.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script>
-        <script src="js/sankey.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script> -->
+        <!-- <script src="js/sankey.js"></script> -->
         <script src="js/main-world.js"></script>
         <script src="js/worldMap.js"></script>
-        <link rel="stylesheet" href="css/style_flow.css">
+        <!-- <link rel="stylesheet" href="css/style_flow.css"> -->
 
 
 
-        <script>
+        <!-- <script>
             function openCity(cityName) {
                 var i;
                 var x = document.getElementsByClassName("city");
@@ -400,9 +413,9 @@
                 }
                 document.getElementById(cityName).style.display = "block";
             }
-        </script>
+        </script> -->
 
-        <script>
+        <!-- <script>
             $(document).ready(function(){
               // Add smooth scrolling to all links
               $(".fixed-side-navbar a, .primary-button a").on('click', function(event) {
@@ -427,7 +440,29 @@
                 } // End if
               });
             });
-        </script>
+        </script> -->
+<script>
+ $(document).ready(function () {
+            let nav_offset_top = $(".header_area").height() + 50;
+          
+            function navbarFixed() {
+              if ($(".header_area").length) {
+                $(window).scroll(function () {
+                  let scroll = $(window).scrollTop();
+                  if (scroll >= nav_offset_top) {
+                    $(".header_area .main-menu").addClass("navbar_fixed");
+                  } else {
+                    $(".header_area .main-menu").removeClass("navbar_fixed");
+                  }
+                });
+              }
+            }
+          
+            navbarFixed();
+          });
+</script>
+       
+          
 
     </body>
 </html>
