@@ -8,7 +8,7 @@
 var colorMap;
 
 var colorScale = d3.scaleLinear()
-    .range(["#fee0d2", "#de2d26"]);
+    .range(["#43a5cb", "#317793"]);
 
 
 
@@ -30,7 +30,7 @@ WorldVis.prototype.initVis = function(){
     vis.margin = { top: 40, right: 0, bottom: 60, left: 60 };
 
     vis.width = 800 - vis.margin.left - vis.margin.right,
-    vis.height = 520 - vis.margin.top - vis.margin.bottom;
+        vis.height = 800 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -42,14 +42,14 @@ WorldVis.prototype.initVis = function(){
     vis.state = {
         x: 0,
         y: 0,
-        scale: vis.height / 2.5
+        scale: vis.height / 2
     };
 
 
     vis.projection = d3.geoOrthographic()
         .scale(vis.state.scale)
         .clipAngle(90)
-        .translate([vis.width / 2, vis.height / 2])
+        .translate([vis.width / 2, vis.height / 2-100])
         .scale(250);
 
 
@@ -119,13 +119,13 @@ WorldVis.prototype.createVisualization = function(){
                 return colorScale(vis.filteredData[countryName]);
             }
             else {
-                return "#f6eee8";
+                return "#ddf2d8";
             }
         })
         .on("mouseover", function(d) {
             console.log(d)
             console.log(d.properties.name);
-            countryTooltip.text(d.properties.name +  ": "  + vis.filteredData[d.properties.name]+' t/y')
+            countryTooltip.text(d.properties.name +  ": "  + vis.filteredData[d.properties.name])
             //.text(vis.filteredData[d.properties.name])
                 .style("left", (d3.event.pageX + 7) + "px")
                 .style("top", (d3.event.pageY - 15) + "px")
@@ -214,4 +214,34 @@ WorldVis.prototype.createVisualization = function(){
 
         vis.projection.rotate(eulerAngles);
     }
+
+
+
+
+    //Mouse events
+    //
+    // var countryTooltip = d3.select("body").append("div").attr("class", "countryTooltip");
+    //     //countryList = d3.select("body").append("select").attr("name", "countries");
+    //
+    // .on("mouseover", function(d) {
+    //     console.log(d)
+    //     // countryTooltip.text(countryById[d.id])
+    //     //     .style("left", (d3.event.pageX + 7) + "px")
+    //     //     .style("top", (d3.event.pageY - 15) + "px")
+    //     //     .style("display", "block")
+    //     //     .style("opacity", 1);
+    // })
+    //     .on("mouseout", function(d) {
+    //         countryTooltip.style("opacity", 0)
+    //             .style("display", "none");
+    //     })
+    //     .on("mousemove", function(d) {
+    //         countryTooltip.style("left", (d3.event.pageX + 7) + "px")
+    //             .style("top", (d3.event.pageY - 15) + "px");
+    //     });
+
+
+
+
+
 };
