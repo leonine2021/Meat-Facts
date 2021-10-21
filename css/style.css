@@ -9,9 +9,68 @@ body {
   height: 100%;
 }
 
+/* start nav bar */
+a.navbar-brand {
+  padding: 0 2rem 0 5rem;
+}
+
+nav.navbar {
+  padding: 1rem 15rem;
+}
+
+a.nav-link {
+  text-transform: uppercase;
+  padding: 1.7rem;
+  font-weight: 500;
+  color: black;
+}
+
+.header_area .main-menu .nav-item .nav-link {
+  font: normal 500 15px/2px var(--roboto);
+  text-transform: uppercase;
+  padding: 1.7rem;
+  color: var(--title-color);
+}
+
+.header_area .main-menu .navbar-nav .active a {
+  background: var(--gradient-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header_area .main-menu .navbar-nav a:hover {
+  background: var(--gradient-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* end nav bar */
+
+/* start banner */
+
+.site-main .site-banner .row h1 > span {
+  display: block;
+  /* font: normal bold 49px/ 60px var(--roboto); */
+  text-align: center;
+  padding: 0 24rem;
+  font-size: 60px;
+}
+
+section#home {
+  background: url(../img/meat_vocano.jpg) no-repeat center 50px fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 600px;
+}
+
+/* end banner */
+
 #methane-vis {
   padding-bottom: 10px;
-  /* font-family: "Hannotate SC"; */
 }
 
 #compare-chart {
@@ -19,7 +78,6 @@ body {
   font-size: 12pt;
   text-align: left;
   font-family: "Roboto", sans-serif;
-  font-style: italic;
 }
 
 #compare-area {
