@@ -9,6 +9,10 @@ body {
   height: 100%;
 }
 
+/* section {
+  height: 1000px;
+} */
+
 /* start nav bar */
 a.navbar-brand {
   padding: 1em;
@@ -16,7 +20,7 @@ a.navbar-brand {
 
 /* nav.navbar {
   /* padding: 1rem 19rem; */
-} */
+/* } */
 
 a.nav-link {
   text-transform: uppercase;
@@ -73,7 +77,35 @@ section#home {
 
 /* end monopleth area */
 
-#methane-vis {
+/* start monopleth area */
+
+/* end monopleth area */
+
+/* start plate area */
+section#part3 {
+  background: url(../img/plate.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 1000px;
+}
+
+div#dropdown-menu {
+  transform: translateY(9%);
+}
+
+div#donut-chart {
+  transform: translateX(8%) translateY(9%);
+}
+
+div#info-table {
+  transform: translateY(9%);
+}
+
+/* end plate area */
+
+/* #methane-vis {
   padding-bottom: 10px;
 }
 
@@ -92,4 +124,4 @@ section#home {
 
 #reset-button {
   padding-top: 100px;
-}
+} */

@@ -106,13 +106,30 @@
       <!-- =======================end monopleth area ========================= -->
 
       <!-- =======================start tree area ========================= -->
-      <section>
+      <section class="emission-compare" id="part2">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-md-6">
+            <div class="col-md-6">
               <div id="methane-vis"></div>
             </div>
-            <div class="col-md-4 col-md-6">
+            <div class="col-md-2" id="compare-area" style="height: 500px">
+              <div class="row" id="compare-chart">
+                Click on a category of food to see its breakdown into specific
+                items.<br />
+                For each item, see how it compares to the three biggest wasters:
+                beef, dairy, and lamb.
+              </div>
+              <div class="row" id="reset-button" align="center">
+                <a
+                  class="example_f"
+                  onclick="reset()"
+                  target="_blank"
+                  rel="nofollow"
+                  ><span>RESET</span></a
+                >
+              </div>
+            </div>
+            <div class="col-md-4">
               <h3 class="chapter">Meat & GHG Emission</h3>
               <p>
                 Compared to other foods, meat production has large environmental
@@ -139,46 +156,22 @@
       <!-- =======================end tree area ========================= -->
 
       <!-- =======================start plate area ========================= -->
-      <section>
+      <section class="plate-chart" id="part3">
         <div class="container">
           <div class="row">
-            <div class="col-md-3" style="height: 800px">
-              <div class="row">
-                <div class="col-md-10">
-                  <select multiple id="dropdown"></select>
-                </div>
-                <div class="col-md-2">
-                  <button id="btn">Reset</button>
-                </div>
-              </div>
+            <div class="col-md-3" id="dropdown-menu">
+              <select multiple id="dropdown"></select>
+              <button id="btn">Reset</button>
             </div>
 
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-1">
-                  <object
-                    type="image/svg+xml"
-                    data="svg/food-01.svg"
-                    id="fork"
-                  ></object>
-                </div>
-                <div class="col-md-6">
-                  <div id="chart-area1"></div>
-                </div>
-                <div class="col-md-1 offset-4">
-                  <object
-                    type="image/svg+xml"
-                    data="svg/food-02.svg"
-                    id="knife"
-                  ></object>
-                </div>
-              </div>
+            <div class="col-md-6" id="donut-chart">
+              <div id="chart-area1"></div>
             </div>
             <div
               class="col-md-3"
+              id="info-table"
               style="
-                background-color: rgba(240, 248, 255, 0.49);
-                height: 500px;
+                background-color: rgba(96, 177, 248, 0.49);
                 border-radius: 5px;
               "
             >
@@ -190,6 +183,34 @@
       </section>
       <!-- =======================end plate area ========================= -->
     </main>
+
+    <footer class="footer-area">
+      <div class="container">
+        <div class="">
+          <div class="site-logo text-center py-4">
+            <a href="#"><img src="./img/logo.png" alt="logo" /></a>
+          </div>
+          <div class="social text-center">
+            <h5 class="text-uppercase">Follow me</h5>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+          <div class="copyrights text-center">
+            <p class="para">
+              Copyright ©2019 All rights reserved | This template is made with
+              by
+              <a href="#"
+                ><span style="color: var(--primary-color)"
+                  >Daily Tuition</span
+                ></a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script src="./js/jquery3.6.0.js"></script>
     <script src="./js/bootstrap.min.js"></script>
