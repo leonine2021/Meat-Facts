@@ -32,6 +32,7 @@ function loadWorldData(data1, data2) {
     }
   });
   worldChart = new WorldVis("world-vis", yearDict, mapData);
+  //   console.log(yearDict);
 }
 
 // Render visualization

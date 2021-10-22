@@ -28,9 +28,8 @@ WorldVis.prototype.initVis = function () {
   vis.colorScale = d3
     .scaleQuantile()
     // .domain([d3.min(Object.values(vis.data)), d3.max(Object.values(vis.data))])
-    .domain(Object.values(vis.data))
+    .domain([50000, 5000000])
     .range([
-      "#fff5f0",
       "#fee3d6",
       "#fdc9b4",
       "#fcaa8e",
@@ -42,6 +41,8 @@ WorldVis.prototype.initVis = function () {
       "#970b13",
       "#67000d",
     ]);
+
+  //   console.log(vis.colorScale.domain(), vis.colorScale.quantiles());
 
   // SVG drawing area
   vis.svg = d3
@@ -56,7 +57,7 @@ WorldVis.prototype.initVis = function () {
     );
 
   vis.state = {
-    x: vis.innerWidth / 2,
+    x: vis.innerWidth / 2 - 50,
     y: vis.innerHeight / 2 - 75,
     scale: vis.innerHeight / 3,
   };
@@ -91,10 +92,26 @@ WorldVis.prototype.createVisualization = function () {
     .style("opacoty", 0);
 
   // Render the world by using the path generator
+  var gradiantColors = ["white", "lightgray"];
+  var offsets = ["0%", "100%"];
+  vis.svg
+    .append("defs")
+    .append("radialGradient")
+    .attr("id", "mygrad")
+    .attr("spreadMethod", "pad")
+    .selectAll("stop")
+    .data(gradiantColors)
+    .enter()
+    .append("stop")
+    .attr("offset", (d, i) => offsets[i])
+    .attr("stop-color", (d) => d);
+
   vis.svg
     .append("path")
     .attr("d", vis.path({ type: "Sphere" }))
-    .attr("fill", "rgba(230,230,230,0.5)");
+    .attr("fill", "url(#mygrad)");
+  // .attr("stroke-width", 10)
+  // .attr("stroke", "url(#mygrad)");
 
   vis.svg
     .selectAll("path")
@@ -113,7 +130,7 @@ WorldVis.prototype.createVisualization = function () {
     })
     .on("mouseover", function (d) {
       let country = d.properties.name;
-      let value = vis.data[d.properties.name];
+      let value = vis.data[country];
       d3.select(this).attr("opacity", 0.5);
 
       toolTip.style("opacity", 0.9);
@@ -134,6 +151,48 @@ WorldVis.prototype.createVisualization = function () {
       toolTip.style("opacity", 0);
       d3.select(this).attr("opacity", 1);
     });
+
+  // legend
+  let legendGroup = vis.svg
+    .append("g")
+    .attr("id", "color-legend")
+    .attr(
+      "transform",
+      `translate(${vis.innerWidth - 150},${vis.innerHeight - 375})`
+    );
+
+  let bounds = [
+    vis.colorScale.domain()[0],
+    ...vis.colorScale.quantiles(),
+    vis.colorScale.domain()[1],
+  ];
+  legendGroup
+    .selectAll("rect")
+    .data(bounds)
+    .enter()
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", (d, i) => 15 * (bounds.length - 1 - i))
+    .attr("width", "12px")
+    .attr("height", "12px")
+    .attr("fill", (d) => vis.colorScale(d));
+
+  legendGroup
+    .selectAll("text")
+    .attr("calss", "text-color-legend")
+    .data(bounds)
+    .enter()
+    .append("text")
+    .attr("x", 18)
+    .attr("y", (d, i) => 15 * (bounds.length - 1 - i))
+    .text((d, i) => {
+      if (i === 0) {
+        return `<${d}`;
+      }
+      return `${bounds[i - 1]} ~ ${bounds[i]}`;
+    })
+    .attr("dy", "8px")
+    .attr("font-size", "6pt");
 
   var v0, // Mouse position in Cartesian coordinates at start of drag gesture.
     r0, // Projection rotation as Euler angles at start.
