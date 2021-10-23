@@ -9,6 +9,22 @@ body {
   height: 100%;
 }
 
+div.row.desc {
+  padding-top: 5%;
+  justify-content: center;
+  display: inline-block;
+}
+
+div.row.desc > h3 {
+  text-align: center;
+}
+
+div.row.desc > p {
+  padding-left: 25%;
+  padding-right: 25%;
+  text-align: justify;
+}
+
 /* section {
   height: 1000px;
 } */
@@ -53,6 +69,10 @@ a.nav-link {
 /* end nav bar */
 
 /* start banner */
+h1.title {
+  background-color: rgba(0, 0, 0, 0.137);
+  border-radius: 10px;
+}
 
 .site-main .site-banner .row h1 > span {
   display: block;
@@ -68,7 +88,7 @@ section#home {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 600px;
+  min-height: 800px;
 }
 
 /* end banner */
@@ -93,6 +113,12 @@ div.tooltip {
 }
 
 /* end monopleth area */
+#world-vis {
+  padding-left: 25%;
+  padding-right: 25%;
+  background-color: black;
+  max-height: fit-content;
+}
 
 /* start monopleth area */
 

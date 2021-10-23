@@ -27,7 +27,6 @@ WorldVis.prototype.initVis = function () {
 
   vis.colorScale = d3
     .scaleQuantile()
-    // .domain([d3.min(Object.values(vis.data)), d3.max(Object.values(vis.data))])
     .domain([50000, 5000000])
     .range([
       "#fee3d6",
@@ -42,12 +41,11 @@ WorldVis.prototype.initVis = function () {
       "#67000d",
     ]);
 
-  //   console.log(vis.colorScale.domain(), vis.colorScale.quantiles());
-
   // SVG drawing area
   vis.svg = d3
     .select("#" + vis.parentElement)
     .append("svg")
+    .attr("class", "svg world-map")
     .attr("width", vis.width)
     .attr("height", vis.height)
     .append("g")
@@ -57,8 +55,8 @@ WorldVis.prototype.initVis = function () {
     );
 
   vis.state = {
-    x: vis.innerWidth / 2 - 50,
-    y: vis.innerHeight / 2 - 75,
+    x: vis.innerWidth / 2 - 75,
+    y: vis.innerHeight / 2,
     scale: vis.innerHeight / 3,
   };
 
@@ -92,13 +90,13 @@ WorldVis.prototype.createVisualization = function () {
     .style("opacoty", 0);
 
   // Render the world by using the path generator
-  var gradiantColors = ["white", "lightgray"];
+  var gradiantColors = ["white", "lightblue"];
   var offsets = ["0%", "100%"];
   vis.svg
     .append("defs")
     .append("radialGradient")
     .attr("id", "mygrad")
-    .attr("spreadMethod", "pad")
+    // .attr("spreadMethod", "pad")
     .selectAll("stop")
     .data(gradiantColors)
     .enter()
@@ -110,8 +108,6 @@ WorldVis.prototype.createVisualization = function () {
     .append("path")
     .attr("d", vis.path({ type: "Sphere" }))
     .attr("fill", "url(#mygrad)");
-  // .attr("stroke-width", 10)
-  // .attr("stroke", "url(#mygrad)");
 
   vis.svg
     .selectAll("path")
@@ -152,20 +148,24 @@ WorldVis.prototype.createVisualization = function () {
       d3.select(this).attr("opacity", 1);
     });
 
+  vis.svg
+    .append("text")
+    .attr("id", "world-map-title")
+    .attr("x", vis.innerWidth / 2 - 190)
+    .attr("y", vis.margin.top + 20)
+    .text("Glabal Meat Production in 2017")
+    .attr("fill", "white");
+
   // legend
   let legendGroup = vis.svg
     .append("g")
     .attr("id", "color-legend")
     .attr(
       "transform",
-      `translate(${vis.innerWidth - 150},${vis.innerHeight - 375})`
+      `translate(${vis.innerWidth - 150},${vis.innerHeight - 300})`
     );
 
-  let bounds = [
-    vis.colorScale.domain()[0],
-    ...vis.colorScale.quantiles(),
-    vis.colorScale.domain()[1],
-  ];
+  let bounds = [...vis.colorScale.quantiles(), vis.colorScale.domain()[1]];
   legendGroup
     .selectAll("rect")
     .data(bounds)
@@ -189,10 +189,39 @@ WorldVis.prototype.createVisualization = function () {
       if (i === 0) {
         return `<${d}`;
       }
+      if (i === bounds.length - 1) {
+        return `> ${bounds[i]}`;
+      }
       return `${bounds[i - 1]} ~ ${bounds[i]}`;
     })
-    .attr("dy", "8px")
+    .attr("dy", "9px")
+    .attr("fill", "white")
     .attr("font-size", "6pt");
+
+  // legend for no data
+  legendGroup
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", 15 * 10)
+    .attr("width", "12px")
+    .attr("height", "12px")
+    .attr("fill", "gray");
+  legendGroup
+    .append("text")
+    .attr("x", 18)
+    .attr("y", 15 * 10)
+    .text("No Data")
+    .attr("dy", "10px")
+    .attr("fill", "white")
+    .attr("font-size", "6pt");
+  legendGroup
+    .append("text")
+    .attr("x", 0)
+    .attr("y", -18)
+    .text("Legend[tons/y]")
+    .attr("dy", "10px")
+    .attr("fill", "white")
+    .attr("font-size", "8pt");
 
   var v0, // Mouse position in Cartesian coordinates at start of drag gesture.
     r0, // Projection rotation as Euler angles at start.
