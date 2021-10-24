@@ -1,0 +1,19 @@
+div#ms-list-1 {
+  max-width: 200px;
+  margin-right: 0;
+}
+div.ms-options {
+  max-width: 300px;
+}
+
+li.optgroup {
+  font-size: 8pt;
+}
+
+li.optgroup > span {
+  font-size: 12pt;
+}
+
+div#ms-list-1 > button {
+  max-width: 200px;
+}

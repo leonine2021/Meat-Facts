@@ -10,7 +10,7 @@ BubbleChart = function (_parentElement, _data) {
 BubbleChart.prototype.initVis = function () {
   var vis = this;
 
-  vis.margin = { top: 60, right: 20, bottom: 30, left: 20 };
+  vis.margin = { top: 80, right: 20, bottom: 30, left: 20 };
 
   (vis.width = 300 - vis.margin.left - vis.margin.right),
     (vis.height = 550 - vis.margin.top - vis.margin.bottom);
@@ -26,6 +26,16 @@ BubbleChart.prototype.initVis = function () {
     .attr("width", vis.width + vis.margin.left + vis.margin.right)
     .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
     .attr("class", "bubble-svg");
+
+  vis.svg
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("rx", "10px")
+    .attr("ry", "10px")
+    .attr("width", vis.width + vis.margin.left + vis.margin.right)
+    .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+    .attr("fill", "rgba(0,0,0,0.2)");
 
   vis.y = d3
     .scalePoint()
@@ -61,8 +71,8 @@ BubbleChart.prototype.initVis = function () {
     .append("text")
     .attr("x", 10)
     .attr("y", -10)
-    .text("Emission Breakdown(kg CO2 eq)")
-    .attr("font-size", "10pt");
+    .text("Emission Breakdown")
+    .attr("font-size", "12pt");
 
   vis.ylabel
     .append("text")
@@ -75,8 +85,8 @@ BubbleChart.prototype.initVis = function () {
     .append("text")
     .attr("x", 10)
     .attr("y", 430)
-    .text("Total Emission: " + vis.data.Total)
-    .attr("font-size", "12pt");
+    .text("Total Emission: " + vis.data.Total + " kg CO2 eq")
+    .attr("font-size", "10pt");
 
   //Initialize Circles
   vis.group = vis.svg

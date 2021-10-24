@@ -1,5 +1,4 @@
 //Pie chart for part 3
-// let lastSelection = null;
 
 PieChart = function (_parentElement, _data) {
   this.parentElement = _parentElement;
@@ -35,7 +34,7 @@ PieChart.prototype.initVis = function () {
   var dropdown_list2 = data_grain.map((d) => d.Product);
   var dropdown_list3 = data_veg.map((d) => d.Product);
 
-  //console.log(dropdown_list3)
+  console.log(dropdown_list3);
 
   //Insert select object into html
   var dropdown1 = d3
@@ -104,24 +103,6 @@ PieChart.prototype.initVis = function () {
       }
     },
   });
-  //Reset button
-  d3.select("#btn").on("click", function () {
-    Remove_options();
-    // console.log(vis.displayData)
-  });
-
-  function Remove_options() {
-    $("#dropdown option:selected").prop("selected", false);
-
-    var all_checkboxes = $(":checkbox");
-    all_checkboxes.prop("checked", false);
-
-    $(":button span").text("What did you eat today?").prop("color", "#e9e9e9");
-
-    $("#dropdown").multiselect("refresh");
-    d3.select(".bubble-svg").remove();
-    vis.wrangleData();
-  }
 
   //Get display data for piechart
   $("#dropdown")
@@ -148,8 +129,6 @@ PieChart.prototype.initVis = function () {
         ")"
     );
 
-  //   vis.color = d3.scaleOrdinal(d3.schemeCategory20);
-
   vis.color = d3
     .scaleOrdinal()
     .range([
@@ -164,25 +143,6 @@ PieChart.prototype.initVis = function () {
       "#970b13",
       "#67000d",
     ]);
-
-  //Background Drawings
-  //     var circle1 = vis.pie_group
-  //       .append("circle")
-  //       .attr("cx", 0)
-  //       .attr("cy", 0)
-  //       .attr("r", vis.radius)
-  //       .attr("fill", "None")
-  //       .attr("stroke", "#aaa")
-  //       .attr("stroke-width", "3pt");
-
-  //   var circle2 = vis.pie_group
-  //     .append("circle")
-  //     .attr("cx", 0)
-  //     .attr("cy", 0)
-  //     .attr("r", vis.radius / 2.5)
-  //     .attr("fill", "None")
-  //     .attr("stroke", "#aaa")
-  //     .attr("stroke-width", "3pt");
 };
 
 PieChart.prototype.wrangleData = function () {
@@ -210,7 +170,6 @@ PieChart.prototype.updateVis = function () {
 
   vis.pie = d3.pie();
   // console.log(vis.pie(vis.displayData.map((d) => d.Total)));
-
   // Generate the arcs
   var arc = d3
     .arc()
@@ -238,6 +197,7 @@ PieChart.prototype.updateVis = function () {
       vis.currentSelection.attr("opacity", 0.5);
       var selectedID = this.id;
       var selectedData = vis.displayData[selectedID];
+      // d3.select(".bubble-svg").attr()
       var bubble = new BubbleChart("tooltip", selectedData);
 
       vis.lastSelection = vis.currentSelection;
@@ -266,6 +226,7 @@ PieChart.prototype.updateVis = function () {
 
   if (vis.displayData.length != 0) {
     d3.select("#weight").remove();
+    d3.select("#btn-reset-donunt").remove();
     vis.pie_group
       .append("text")
       .attr("x", 0)
@@ -279,8 +240,37 @@ PieChart.prototype.updateVis = function () {
       .attr("x", 0)
       .attr("y", vis.height - 195)
       .attr("text-anchor", "middle")
-      .text("Hover over the pie chart to see the emission breakdown.")
+      .text("Click on the pie chart to see the emission breakdown.")
       .attr("id", "instruction");
+
+    // insert reset button
+    var button = $("<input/>").attr({
+      type: "button",
+      class: "btn btn-danger",
+      id: "btn-reset-donunt",
+      value: "Clear",
+    });
+    $("#reset-button-container").append(button);
+
+    //Reset button
+    d3.select("#btn-reset-donunt").on("click", function () {
+      removeOptions();
+    });
+
+    function removeOptions() {
+      $("#dropdown option:selected").prop("selected", false);
+
+      var all_checkboxes = $(":checkbox");
+      all_checkboxes.prop("checked", false);
+
+      $(":button span")
+        .text("What did you eat today?")
+        .prop("color", "#e9e9e9");
+
+      $("#dropdown").multiselect("refresh");
+      d3.select(".bubble-svg").remove();
+      vis.wrangleData();
+    }
 
     d3.select(".total-emission").remove();
     var text = vis.pie_group
@@ -305,5 +295,6 @@ PieChart.prototype.updateVis = function () {
   } else {
     d3.select(".total-emission").remove();
     d3.select("#weight").remove();
+    d3.select("#btn-reset-donunt").remove();
   }
 };

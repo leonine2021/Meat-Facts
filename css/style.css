@@ -171,6 +171,7 @@ section#part3 {
 }
 
 div#dropdown-menu {
+  display: inline;
   transform: translateY(9%);
 }
 
@@ -179,7 +180,16 @@ div#donut-chart {
 }
 
 div#info-table {
+  border-radius: 5px;
   transform: translateY(9%);
+}
+div#chart-area1 {
+  display: block;
+}
+div#reset-button-container {
+  justify-content: center;
+  padding-left: 35%;
+  padding-right: 55%;
 }
 
 /* end plate area */
