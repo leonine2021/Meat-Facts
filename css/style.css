@@ -1,6 +1,7 @@
 /* import fonts from fonts.css */
 @import url(./fonts.css);
 
+/* global */
 html,
 body {
   margin: 0%;
@@ -25,22 +26,18 @@ div.row.desc > p {
   text-align: justify;
 }
 
-/* section {
-  height: 1000px;
-} */
-
 /* start nav bar */
 a.navbar-brand {
-  padding: 1em;
+  padding: 0rem;
 }
 
 nav.navbar {
-  padding: 1rem 19rem;
+  padding: 0rem 19rem;
 }
 
 a.nav-link {
   text-transform: uppercase;
-  padding: 1.7rem;
+  padding: 0rem;
   font-weight: 500;
   color: black;
 }
@@ -48,22 +45,34 @@ a.nav-link {
 .header_area .main-menu .nav-item .nav-link {
   font: normal 500 15px/2px var(--roboto);
   text-transform: uppercase;
-  padding: 1.7rem;
+  padding: 1rem;
   color: var(--title-color);
 }
 
 .header_area .main-menu .navbar-nav .active a {
-  background: var(--gradient-color);
+  /* background: var(--gradient-color); */
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: gray;
   background-clip: text;
 }
 
 .header_area .main-menu .navbar-nav a:hover {
-  background: var(--gradient-color);
+  /* background: var(--gradient-color); */
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: gray;
   background-clip: text;
+}
+
+.navbar_fixed {
+  position: fixed;
+  width: 100%;
+  top: -1px;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: var(--box-shadow);
+  z-index: 999;
+  transition: background 1s ease;
 }
 
 /* end nav bar */
@@ -146,7 +155,7 @@ div.tooltip.tv {
   position: absolute;
   text-align: center;
   width: 200px;
-  height: 60px;
+  height: 65px;
   /* padding: 2px; */
   font: 12px sans-serif;
   background: white;
@@ -172,7 +181,7 @@ section#part3 {
 
 div#dropdown-menu {
   display: inline;
-  transform: translateY(9%);
+  transform: translateY(18%);
 }
 
 div#donut-chart {
@@ -200,8 +209,6 @@ section#part4 {
 }
 div#img-container {
   justify-content: center;
-  /* max-width: 500px;
-  max-height: 500px; */
   padding-left: 35%;
   padding-right: 35%;
 }
@@ -224,6 +231,10 @@ section#video-container .caption {
   color: #ffffff;
   padding: 10px;
   font-style: italic;
+}
+p.copy-right {
+  vertical-align: bottom;
+  text-align: center;
 }
 /* section#video-container {
   background: url(../video/file.mp4) no-repeat center center fixed;
