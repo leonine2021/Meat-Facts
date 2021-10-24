@@ -22,7 +22,7 @@ WorldVis.prototype.initVis = function () {
   vis.margin = { top: 40, right: 0, bottom: 60, left: 60 };
 
   vis.width = 800;
-  vis.height = 650;
+  vis.height = 575;
 
   vis.innerWidth = 800 - vis.margin.left - vis.margin.right;
   vis.innerHeight = 800 - vis.margin.top - vis.margin.bottom;
@@ -58,7 +58,7 @@ WorldVis.prototype.initVis = function () {
 
   vis.state = {
     x: vis.innerWidth / 2 - 100,
-    y: vis.innerHeight / 2 - 50,
+    y: vis.innerHeight / 2 - 100,
     scale: vis.innerHeight / 3,
   };
 
@@ -147,21 +147,13 @@ WorldVis.prototype.initVis = function () {
       d3.select(this).attr("opacity", 1);
     });
 
-  //   vis.svg
-  //     .append("text")
-  //     .attr("id", "world-map-title")
-  //     .attr("x", vis.innerWidth / 2 - 190)
-  //     .attr("y", vis.margin.top + 20)
-  //     .text("GLOBAL MEAT PRODUCTION")
-  //     .attr("fill", "white");
-
   // legend
   let legendGroup = vis.svg
     .append("g")
     .attr("id", "color-legend")
     .attr(
       "transform",
-      `translate(${vis.innerWidth - 150},${vis.innerHeight - 350})`
+      `translate(${vis.innerWidth - 150},${vis.innerHeight - 400})`
     );
 
   let bounds = [...vis.colorScale.quantiles(), vis.colorScale.domain()[1]];
@@ -306,30 +298,30 @@ WorldVis.prototype.initVis = function () {
   }
 
   //Mouse events
-  var countryTooltip = d3
-    .select("body")
-    .append("div")
-    .attr("class", "countryTooltip");
-  countryList = d3
-    .select("body")
-    .append("select")
-    .attr("name", "countries")
-    .on("mouseover", function (d) {
-      countryTooltip
-        .text(countryById[d.id])
-        .style("left", d3.event.pageX + 7 + "px")
-        .style("top", d3.event.pageY - 15 + "px")
-        .style("display", "block")
-        .style("opacity", 1);
-    })
-    .on("mouseout", function (d) {
-      countryTooltip.style("opacity", 0).style("display", "none");
-    })
-    .on("mousemove", function (d) {
-      countryTooltip
-        .style("left", d3.event.pageX + 7 + "px")
-        .style("top", d3.event.pageY - 15 + "px");
-    });
+  // var countryTooltip = d3
+  //   .select("body")
+  //   .append("div")
+  //   .attr("class", "countryTooltip");
+  // countryList = d3
+  //   .select("body")
+  // .append("select")
+  // .attr("name", "countries")
+  // .on("mouseover", function (d) {
+  //   countryTooltip
+  //     .text(countryList[d.id])
+  //     .style("left", d3.event.pageX + 7 + "px")
+  //     .style("top", d3.event.pageY - 15 + "px")
+  //     .style("display", "block")
+  //     .style("opacity", 1);
+  // })
+  // .on("mouseout", function (d) {
+  //   countryTooltip.style("opacity", 0).style("display", "none");
+  // })
+  // .on("mousemove", function (d) {
+  //   countryTooltip
+  //     .style("left", d3.event.pageX + 7 + "px")
+  //     .style("top", d3.event.pageY - 15 + "px");
+  // });
 };
 
 WorldVis.prototype.updateWorldMap = function () {

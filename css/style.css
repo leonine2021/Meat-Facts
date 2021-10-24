@@ -191,8 +191,49 @@ div#reset-button-container {
   padding-left: 35%;
   padding-right: 55%;
 }
-
 /* end plate area */
+
+/* start more-facts */
+
+section#part4 {
+  min-height: 1000px;
+}
+div#img-container {
+  justify-content: center;
+  /* max-width: 500px;
+  max-height: 500px; */
+  padding-left: 35%;
+  padding-right: 35%;
+}
+/* end more-facts */
+
+/* start footer */
+
+section#video-container video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: 0;
+}
+
+section#video-container .caption {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  font-style: italic;
+}
+/* section#video-container {
+  background: url(../video/file.mp4) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 1000px;
+} */
+/* end footer */
 
 /* #methane-vis {
   padding-bottom: 10px;
