@@ -10,7 +10,7 @@
 
 WorldVis = function (_parentElement, _data, _mapData) {
   this.parentElement = _parentElement;
-  this.year = 1962;
+  this.year = 1961;
   this.data = _data;
   this.mapData = _mapData;
   console.log(_data);
@@ -47,7 +47,7 @@ WorldVis.prototype.initVis = function () {
   vis.svg = d3
     .select("#" + vis.parentElement)
     .append("svg")
-    .attr("class", "svg-area")
+    .attr("class", "svg world-map")
     .attr("width", vis.width)
     .attr("height", vis.height)
     .append("g")
@@ -333,9 +333,8 @@ WorldVis.prototype.initVis = function () {
 };
 
 WorldVis.prototype.updateWorldMap = function () {
-  var vis = this;
-  console.log(d3.select(".svg.world-map").selectAll("path.mark-countries"));
-  vis.path = d3.geoPath().projection(vis.projection);
+  vis = this;
+  console.log("called!");
   let newSvg = d3
     .select(".svg.world-map")
     .selectAll("path")
