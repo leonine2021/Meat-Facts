@@ -13,7 +13,7 @@ WorldVis = function (_parentElement, _data, _mapData) {
   this.year = 1961;
   this.data = _data;
   this.mapData = _mapData;
-  console.log(_data);
+  // console.log(_data);
   this.initVis();
 };
 
@@ -334,7 +334,7 @@ WorldVis.prototype.initVis = function () {
 
 WorldVis.prototype.updateWorldMap = function () {
   vis = this;
-  console.log("called!");
+  // console.log("called!");
   let newSvg = d3
     .select(".svg.world-map")
     .selectAll("path")
