@@ -6,11 +6,11 @@ d3.queue()
   });
 
 function loadWorldData(data1, data2) {
-  worldDict = {};
+  var worldDict = {};
 
-  yearDict = {};
+  var yearDict = {};
 
-  mapData = data1;
+  var mapData = data1;
 
   //worldDict is a dictionary of dictionaries, where countries are first keys and
   //years are second keys with metric tons of animals produced as the value
@@ -31,9 +31,6 @@ function loadWorldData(data1, data2) {
       worldDict[d.Area][d.Year] = d.Value;
     }
   });
-  worldChart = new WorldVis("world-vis", yearDict, mapData);
-  //   console.log(yearDict);
-}
 
-// Render visualization
-function updateVisualization() {}
+  worldChart = new WorldVis("world-vis", worldDict, mapData);
+}

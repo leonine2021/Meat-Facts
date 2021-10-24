@@ -13,7 +13,7 @@ WorldVis = function (_parentElement, _data, _mapData) {
   this.year = 1962;
   this.data = _data;
   this.mapData = _mapData;
-  console.log(_data);
+  console.log(_mapData);
   this.initVis();
 };
 
@@ -47,7 +47,7 @@ WorldVis.prototype.initVis = function () {
   vis.svg = d3
     .select("#" + vis.parentElement)
     .append("svg")
-    .attr("class", "svg-area")
+    .attr("class", "svg world-map")
     .attr("width", vis.width)
     .attr("height", vis.height)
     .append("g")
@@ -57,8 +57,8 @@ WorldVis.prototype.initVis = function () {
     );
 
   vis.state = {
-    x: vis.innerWidth / 2 - 100,
-    y: vis.innerHeight / 2 - 50,
+    x: vis.innerWidth / 2 - 75,
+    y: vis.innerHeight / 2,
     scale: vis.innerHeight / 3,
   };
 
@@ -67,18 +67,31 @@ WorldVis.prototype.initVis = function () {
     .scale(vis.state.scale)
     .translate([vis.state.x, vis.state.y]);
 
+  //Define path generator, using the Albers USA projection
   vis.path = d3.geoPath().projection(vis.projection);
-  vis.worldTopo = topojson.feature(
+  vis.createVisualization();
+};
+
+//WorldVis.prototype.createVisualization = function(error, data1, data2){
+
+WorldVis.prototype.createVisualization = function () {
+  // Visualize data1 and data2
+  var vis = this;
+  //   console.log(vis.data);
+  // Convert TopoJSON to GeoJSON (target object = 'states')
+  var worldTopo = topojson.feature(
     vis.mapData,
     vis.mapData.objects.countries
   ).features;
+
+  //   console.log(worldTopo.length);
 
   // div for tooltip
   var toolTip = d3
     .select("body")
     .append("div")
-    .attr("class", "tooltip wm")
-    .style("opacity", 0);
+    .attr("class", "tooltip")
+    .style("opacoty", 0);
 
   // Render the world by using the path generator
   var gradiantColors = ["white", "lightblue"];
@@ -87,6 +100,7 @@ WorldVis.prototype.initVis = function () {
     .append("defs")
     .append("radialGradient")
     .attr("id", "mygrad")
+    // .attr("spreadMethod", "pad")
     .selectAll("stop")
     .data(gradiantColors)
     .enter()
@@ -95,21 +109,23 @@ WorldVis.prototype.initVis = function () {
     .attr("stop-color", (d) => d);
 
   vis.svg
-    .append("circle")
-    .attr("cx", vis.state.x)
-    .attr("cy", vis.state.y)
-    .attr("r", vis.state.scale)
+    .append("path")
+    .attr("d", vis.path({ type: "Sphere" }))
     .attr("fill", "url(#mygrad)");
 
+  let counter1 = 0;
   vis.svg
     .selectAll("path")
-    .data(vis.worldTopo)
+    .data(worldTopo)
     .enter()
     .append("path")
     .attr("class", "mark-countries")
     .attr("d", vis.path)
     .attr("fill", function (d) {
       var countryName = d.properties.name;
+      //   console.log("country-init", countryName);
+      //   console.log(counter1);
+      counter1 += 1;
       if (
         vis.data[countryName] != undefined &&
         vis.data[countryName][vis.year] != undefined
@@ -147,13 +163,13 @@ WorldVis.prototype.initVis = function () {
       d3.select(this).attr("opacity", 1);
     });
 
-  //   vis.svg
-  //     .append("text")
-  //     .attr("id", "world-map-title")
-  //     .attr("x", vis.innerWidth / 2 - 190)
-  //     .attr("y", vis.margin.top + 20)
-  //     .text("GLOBAL MEAT PRODUCTION")
-  //     .attr("fill", "white");
+  vis.svg
+    .append("text")
+    .attr("id", "world-map-title")
+    .attr("x", vis.innerWidth / 2 - 190)
+    .attr("y", vis.margin.top + 20)
+    .text("Glabal Meat Production in 2017")
+    .attr("fill", "white");
 
   // legend
   let legendGroup = vis.svg
@@ -161,7 +177,7 @@ WorldVis.prototype.initVis = function () {
     .attr("id", "color-legend")
     .attr(
       "transform",
-      `translate(${vis.innerWidth - 150},${vis.innerHeight - 350})`
+      `translate(${vis.innerWidth - 150},${vis.innerHeight - 300})`
     );
 
   let bounds = [...vis.colorScale.quantiles(), vis.colorScale.domain()[1]];
@@ -194,8 +210,9 @@ WorldVis.prototype.initVis = function () {
       return `${bounds[i - 1]} ~ ${bounds[i]}`;
     })
     .attr("dy", "9px")
-    .attr("fill", "#aaa")
+    .attr("fill", "white")
     .attr("font-size", "6pt");
+
   // legend for no data
   legendGroup
     .append("rect")
@@ -210,7 +227,7 @@ WorldVis.prototype.initVis = function () {
     .attr("y", 15 * 10)
     .text("No Data")
     .attr("dy", "10px")
-    .attr("fill", "#aaa")
+    .attr("fill", "white")
     .attr("font-size", "6pt");
   legendGroup
     .append("text")
@@ -218,8 +235,11 @@ WorldVis.prototype.initVis = function () {
     .attr("y", -18)
     .text("Legend[tons/y]")
     .attr("dy", "10px")
-    .attr("fill", "#aaa")
+    .attr("fill", "white")
     .attr("font-size", "8pt");
+
+  // Time slider
+  //   console.log(d3.sliderBottom());
 
   let years = d3.range(0, 12).map(function (d, i) {
     return (1960 + i * 5).toString();
@@ -230,33 +250,24 @@ WorldVis.prototype.initVis = function () {
     .max(2017)
     .step(1)
     .width(500)
-    .tickFormat(d3.format("d"))
     .tickValues(years)
-    .default(1961)
+    .default("1961")
     .on("onchange", (val) => {
       vis.year = val;
-      vis.updateWorldMap();
+      redrawFromSlider();
     });
 
   var gTime = d3
     .select("div#world-vis")
     .append("svg")
-    .attr("class", "timeline")
     .attr("width", 3000)
     .attr("height", 100)
     .append("g")
-    .attr("transform", `translate(75,30)`);
+    .attr("transform", `translate(100,30)`);
 
   gTime.call(sliderTime);
 
-  d3.select("svg.timeline")
-    .select("g")
-    .append("text")
-    .attr("x", -5)
-    .attr("y", -12)
-    .attr("fill", "#aaa")
-    .attr("font-size", 10)
-    .text("timeline");
+  //   d3.select("p#value-time").text(d3.timeFormat("%Y")(sliderTime.value()));
 
   var v0, // Mouse position in Cartesian coordinates at start of drag gesture.
     r0, // Projection rotation as Euler angles at start.
@@ -304,8 +315,8 @@ WorldVis.prototype.initVis = function () {
   function dragended() {
     vis.svg.selectAll(".point").remove();
   }
-
   //Mouse events
+  //
   var countryTooltip = d3
     .select("body")
     .append("div")
@@ -330,32 +341,27 @@ WorldVis.prototype.initVis = function () {
         .style("left", d3.event.pageX + 7 + "px")
         .style("top", d3.event.pageY - 15 + "px");
     });
-};
-
-WorldVis.prototype.updateWorldMap = function () {
-  var vis = this;
-  console.log(d3.select(".svg.world-map").selectAll("path.mark-countries"));
-  vis.path = d3.geoPath().projection(vis.projection);
-  let newSvg = d3
-    .select(".svg.world-map")
-    .selectAll("path")
-    .data(vis.worldTopo);
-  newSvg
-    .enter()
-    .append("path")
-    .merge(newSvg)
-    .attr("class", "mark-countries")
-    .attr("d", vis.path)
-    .attr("fill", function (d) {
-      var countryName = d.properties.name;
-      if (
-        vis.data[countryName] != undefined &&
-        vis.data[countryName][vis.year] != undefined
-      ) {
-        return vis.colorScale(vis.data[countryName][vis.year]);
-      } else {
-        return "gray";
-      }
-    });
-  newSvg.exit().remove();
+  redrawFromSlider = function () {
+    let counter2 = 0;
+    let newSvg = d3.selectAll(".mark-countries").data(worldTopo);
+    newSvg
+      .enter()
+      .append("path")
+      .merge(newSvg)
+      .attr("class", "mark-countries")
+      .attr("d", vis.path)
+      .attr("fill", function (d) {
+        var countryName = d.properties.name;
+        counter2 += 1;
+        if (
+          vis.data[countryName] != undefined &&
+          vis.data[countryName][vis.year] != undefined
+        ) {
+          return vis.colorScale(vis.data[countryName][vis.year]);
+        } else {
+          return "gray";
+        }
+      });
+    newSvg.exit().remove();
+  };
 };

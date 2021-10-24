@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="./css/jquery.multiselect.css" />
     <link rel="stylesheet" href="./css/style.css" />
 
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- for using d3 simple slider -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
   </head>
   <body>
     <header>
@@ -62,7 +64,7 @@
       <section class="site-banner" id="home">
         <div class="container">
           <div class="row">
-            <h1 class="title flex">
+            <h1 class="title">
               <span>"Meat" Your</span>
               <span>Worst</span>
               <span>Nightmare</span>
@@ -73,11 +75,17 @@
       <!-- =======================end banner area ========================= -->
 
       <!-- =======================start monopleth area ========================= -->
-      <section class="global-production" id="part1">
+      <section
+        class="global-production"
+        id="part1"
+        style="background-color: black"
+      >
         <div class="container">
           <div class="row desc">
-            <h3 class="chapter mt-3">Global Meat Production</h3>
-            <p>
+            <h3 class="chapter mt-3" style="color: #aaa">
+              GLOBAL MEAT PRODUCTION
+            </h3>
+            <p class="text section" style="color: #aaa">
               Feeding the world in a sustainable way is one of our most pressing
               challenges in the coming decades. Meat plays a pivotal role in
               this. Global meat consumption has increased rapidly over the past
@@ -98,19 +106,22 @@
               15-fold since 1961.
             </p>
           </div>
-        </div>
-        <div class="row">
-          <div id="world-vis"></div>
+          <div class="row" id="world-map">
+            <div id="world-vis"></div>
+          </div>
+          <div class="row">
+            <div id="slider-time"></div>
+          </div>
         </div>
       </section>
       <!-- =======================end monopleth area ========================= -->
 
       <!-- =======================start tree area ========================= -->
-      <section class="emission-compare" id="part2">
+      <section class="emission-compare mb-5" id="part2">
         <div class="container">
-          <div class="row desc">
-            <h3 class="chapter">Meat & GHG Emission</h3>
-            <p>
+          <div class="row desc mt-3">
+            <h3 class="chapter" style="color: black">Meat & GHG Emission</h3>
+            <p class="text section" style="color: black">
               Compared to other foods, meat production has large environmental
               impacts. The most severe one is increasing
               <b>greenhouse gas(GHG)</b> emissions.<br /><br />
@@ -126,30 +137,24 @@
               chart on the right shows the emissions comparison of four major
               types of foods:
               <b>Meat, Grain, Vegetables and fruit</b>. Each type contains
-              sub-categories, click on the chart to explore.
+              sub-categories, click on the chart to explore.For each item, see
+              how it compares to the three biggest wasters: beef (43.3 kg CO2
+              e/kg), lamb (24 kg CO2 e/kg) and dairy (20.2 kg CO2 e/kg).
             </p>
           </div>
+          <div class="row" id="compare-chart"></div>
           <div class="row">
-            <div class="col-md-6">
-              <div id="methane-vis"></div>
-            </div>
-            <div class="col-md-2" id="compare-area" style="height: 500px">
-              <div class="row" id="compare-chart">
-                Click on a category of food to see its breakdown into specific
-                items.<br />
-                For each item, see how it compares to the three biggest wasters:
-                beef, dairy, and lamb.
-              </div>
-              <div class="row" id="reset-button" align="center">
-                <a
-                  class="example_f"
-                  onclick="reset()"
-                  target="_blank"
-                  rel="nofollow"
-                  ><span>RESET</span></a
-                >
-              </div>
-            </div>
+            <div id="tree-vis"></div>
+          </div>
+          <div class="row" id="reset-button">
+            <button
+              class="btn btn-danger example_f"
+              onclick="reset()"
+              target="_blank"
+              rel="nofollow"
+            >
+              <span>RESET</span>
+            </button>
           </div>
         </div>
       </section>
@@ -223,8 +228,8 @@
     <script src="./js/WorldMap/main-world.js"></script>
     <script src="./js/WorldMap/worldMap.js"></script>
 
-    <!-- <script src="./js/TreeChart/methanetree.js"></script> -->
-    <!-- <script src="./js/TreeChart/main-tree.js"></script> -->
+    <script src="./js/TreeChart/methanetree.js"></script>
+    <script src="./js/TreeChart/main-tree.js"></script>
     <!-- <script src="https://d3js.org/d3-color.v1.min.js"></script>
     <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script> -->

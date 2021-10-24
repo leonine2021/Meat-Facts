@@ -34,9 +34,9 @@ a.navbar-brand {
   padding: 1em;
 }
 
-/* nav.navbar {
-  /* padding: 1rem 19rem; */
-/* } */
+nav.navbar {
+  padding: 1rem 19rem;
+}
 
 a.nav-link {
   text-transform: uppercase;
@@ -69,15 +69,15 @@ a.nav-link {
 /* end nav bar */
 
 /* start banner */
-h1.title {
+/* h1.title {
   background-color: rgba(0, 0, 0, 0.137);
   border-radius: 10px;
-}
+} */
 
 .site-main .site-banner .row h1 > span {
   display: block;
   text-align: center;
-  /* padding: 0 20rem; */
+  padding: 0 20rem;
   font-size: 60px;
   transform: translateX(-20px);
 }
@@ -99,7 +99,7 @@ path.mark-countries {
   stroke-width: 0.5;
 }
 
-div.tooltip {
+div.tooltip.wm {
   position: absolute;
   text-align: center;
   width: 200px;
@@ -120,9 +120,45 @@ div.tooltip {
   max-height: fit-content;
 }
 
-/* start monopleth area */
+g.parameter-value > text {
+  fill: white;
+}
 
-/* end monopleth area */
+/* start tree area */
+#tree-vis {
+  padding-left: 25%;
+  padding-right: 25%;
+  /* background-color: black; */
+  max-height: fit-content;
+}
+
+div#reset-button {
+  padding-left: 45%;
+  padding-right: 45%;
+}
+div#compare-chart {
+  padding-left: 35%;
+  padding-right: 35%;
+}
+
+div.tooltip.tv {
+  /* display: block; */
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  /* padding: 2px; */
+  font: 12px sans-serif;
+  background: white;
+  border: 0px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+p.title {
+  display: block;
+}
+
+/* end tree area */
 
 /* start plate area */
 section#part3 {
