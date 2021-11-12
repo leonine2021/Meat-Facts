@@ -21,9 +21,17 @@ div.row.desc > h3 {
 }
 
 div.row.desc > p {
-  padding-left: 25%;
-  padding-right: 25%;
+  padding-left: 20%;
+  padding-right: 20%;
   text-align: justify;
+}
+
+@media screen and (max-width: 800px) {
+  div.row.desc > p {
+    padding-left: 0%;
+    padding-right: 0%;
+    text-align: justify;
+  }
 }
 
 /* start nav bar */
@@ -31,9 +39,9 @@ a.navbar-brand {
   padding: 0rem;
 }
 
-nav.navbar {
+/* nav.navbar {
   padding: 0rem 19rem;
-}
+} */
 
 a.nav-link {
   text-transform: uppercase;
@@ -88,7 +96,7 @@ a.nav-link {
   text-align: center;
   padding: 0 20rem;
   font-size: 60px;
-  transform: translateX(-20px);
+  /* transform: translateX(-20px); */
 }
 
 section#home {
@@ -122,11 +130,21 @@ div.tooltip.wm {
 }
 
 /* end monopleth area */
-#world-vis {
-  padding-left: 25%;
-  padding-right: 25%;
+div#world-map-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div#world-vis {
   background-color: black;
-  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div#world-vis > svg {
+  align-self: center;
 }
 
 g.parameter-value > text {
@@ -236,33 +254,3 @@ p.copy-right {
   vertical-align: bottom;
   text-align: center;
 }
-/* section#video-container {
-  background: url(../video/file.mp4) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  min-height: 1000px;
-} */
-/* end footer */
-
-/* #methane-vis {
-  padding-bottom: 10px;
-}
-
-#compare-chart {
-  padding-top: 100px;
-  font-size: 12pt;
-  text-align: left;
-  font-family: "Roboto", sans-serif;
-}
-
-#compare-area {
-  background: rgba(255, 255, 255, 0.5);
-  max-height: 400px;
-  transform: translate(0, 60px);
-}
-
-#reset-button {
-  padding-top: 100px;
-} */

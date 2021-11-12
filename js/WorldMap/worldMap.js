@@ -10,6 +10,7 @@
 
 WorldVis = function (_parentElement, _data, _mapData) {
   this.parentElement = _parentElement;
+  // this._legendElement = _legendElement;
   this.year = 1961;
   this.data = _data;
   this.mapData = _mapData;
@@ -19,13 +20,15 @@ WorldVis = function (_parentElement, _data, _mapData) {
 
 WorldVis.prototype.initVis = function () {
   var vis = this;
-  vis.margin = { top: 40, right: 0, bottom: 60, left: 60 };
+  vis.margin = { top: 40, right: 0, bottom: 40, left: 0 };
 
-  vis.width = 800;
-  vis.height = 575;
+  console.log(window.innerWidth);
+  // vis.width = 800;
+  vis.width = Math.min(window.innerWidth, 800);
+  vis.height = Math.min(500, window.innerWidth);
 
-  vis.innerWidth = 800 - vis.margin.left - vis.margin.right;
-  vis.innerHeight = 800 - vis.margin.top - vis.margin.bottom;
+  vis.innerWidth = vis.width - vis.margin.left - vis.margin.right;
+  vis.innerHeight = vis.height - vis.margin.top - vis.margin.bottom;
 
   vis.colorScale = d3
     .scaleQuantile()
@@ -56,10 +59,17 @@ WorldVis.prototype.initVis = function () {
       "translate(" + vis.margin.left + "," + vis.margin.top + ")"
     );
 
+  // vis.svgLegend = d3
+  //   .select("#" + vis._legendElement)
+  //   .append("svg")
+  //   .attr("class", "svg legend")
+  //   .attr("width", vis.width / 2)
+  //   .attr("height", vis.height / 4);
+
   vis.state = {
-    x: vis.innerWidth / 2 - 100,
-    y: vis.innerHeight / 2 - 100,
-    scale: vis.innerHeight / 3,
+    x: vis.innerWidth / 2,
+    y: vis.innerHeight / 2,
+    scale: vis.innerHeight / 2,
   };
 
   vis.projection = d3
@@ -148,21 +158,24 @@ WorldVis.prototype.initVis = function () {
     });
 
   // legend
-  let legendGroup = vis.svg
+  var legendGroup = d3
+    .select("div#world-vis")
+    .append("svg")
+    .attr("class", "legend")
+    .attr("width", vis.innerWidth)
+    .attr("height", 200)
     .append("g")
-    .attr("id", "color-legend")
-    .attr(
-      "transform",
-      `translate(${vis.innerWidth - 150},${vis.innerHeight - 400})`
-    );
+    .attr("id", "legend-group")
+    .attr("transform", `translate(${vis.innerWidth / 2},${20})`);
 
   let bounds = [...vis.colorScale.quantiles(), vis.colorScale.domain()[1]];
+  let legendWidth = 100;
   legendGroup
     .selectAll("rect")
     .data(bounds)
     .enter()
     .append("rect")
-    .attr("x", 0)
+    .attr("x", -legendWidth / 2)
     .attr("y", (d, i) => 15 * (bounds.length - 1 - i))
     .attr("width", "12px")
     .attr("height", "12px")
@@ -174,7 +187,7 @@ WorldVis.prototype.initVis = function () {
     .data(bounds)
     .enter()
     .append("text")
-    .attr("x", 18)
+    .attr("x", -legendWidth / 2 + 18)
     .attr("y", (d, i) => 15 * (bounds.length - 1 - i))
     .text((d, i) => {
       if (i === 0) {
@@ -191,14 +204,14 @@ WorldVis.prototype.initVis = function () {
   // legend for no data
   legendGroup
     .append("rect")
-    .attr("x", 0)
+    .attr("x", -legendWidth / 2)
     .attr("y", 15 * 10)
     .attr("width", "12px")
     .attr("height", "12px")
     .attr("fill", "gray");
   legendGroup
     .append("text")
-    .attr("x", 18)
+    .attr("x", -legendWidth / 2 + 18)
     .attr("y", 15 * 10)
     .text("No Data")
     .attr("dy", "10px")
@@ -206,7 +219,7 @@ WorldVis.prototype.initVis = function () {
     .attr("font-size", "6pt");
   legendGroup
     .append("text")
-    .attr("x", 0)
+    .attr("x", -legendWidth / 2)
     .attr("y", -18)
     .text("Legend[tons/y]")
     .attr("dy", "10px")
@@ -221,7 +234,7 @@ WorldVis.prototype.initVis = function () {
     .min(1961)
     .max(2017)
     .step(1)
-    .width(500)
+    .width(vis.innerWidth / 2)
     .tickFormat(d3.format("d"))
     .tickValues(years)
     .default(1961)
@@ -234,10 +247,10 @@ WorldVis.prototype.initVis = function () {
     .select("div#world-vis")
     .append("svg")
     .attr("class", "timeline")
-    .attr("width", 3000)
+    .attr("width", vis.innerWidth)
     .attr("height", 100)
     .append("g")
-    .attr("transform", `translate(75,30)`);
+    .attr("transform", `translate(${vis.innerWidth / 4},30)`);
 
   gTime.call(sliderTime);
 
@@ -296,32 +309,6 @@ WorldVis.prototype.initVis = function () {
   function dragended() {
     vis.svg.selectAll(".point").remove();
   }
-
-  //Mouse events
-  // var countryTooltip = d3
-  //   .select("body")
-  //   .append("div")
-  //   .attr("class", "countryTooltip");
-  // countryList = d3
-  //   .select("body")
-  // .append("select")
-  // .attr("name", "countries")
-  // .on("mouseover", function (d) {
-  //   countryTooltip
-  //     .text(countryList[d.id])
-  //     .style("left", d3.event.pageX + 7 + "px")
-  //     .style("top", d3.event.pageY - 15 + "px")
-  //     .style("display", "block")
-  //     .style("opacity", 1);
-  // })
-  // .on("mouseout", function (d) {
-  //   countryTooltip.style("opacity", 0).style("display", "none");
-  // })
-  // .on("mousemove", function (d) {
-  //   countryTooltip
-  //     .style("left", d3.event.pageX + 7 + "px")
-  //     .style("top", d3.event.pageY - 15 + "px");
-  // });
 };
 
 WorldVis.prototype.updateWorldMap = function () {
