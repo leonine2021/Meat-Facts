@@ -22,7 +22,7 @@ WorldVis.prototype.initVis = function () {
   var vis = this;
   vis.margin = { top: 40, right: 0, bottom: 40, left: 0 };
 
-  console.log(window.innerWidth);
+  // console.log(window.innerWidth);
   // vis.width = 800;
   vis.width = Math.min(window.innerWidth, 800);
   vis.height = Math.min(500, window.innerWidth);
@@ -58,14 +58,6 @@ WorldVis.prototype.initVis = function () {
       "transform",
       "translate(" + vis.margin.left + "," + vis.margin.top + ")"
     );
-
-  // vis.svgLegend = d3
-  //   .select("#" + vis._legendElement)
-  //   .append("svg")
-  //   .attr("class", "svg legend")
-  //   .attr("width", vis.width / 2)
-  //   .attr("height", vis.height / 4);
-
   vis.state = {
     x: vis.innerWidth / 2,
     y: vis.innerHeight / 2,

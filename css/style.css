@@ -28,8 +28,8 @@ div.row.desc > p {
 
 @media screen and (max-width: 800px) {
   div.row.desc > p {
-    padding-left: 0%;
-    padding-right: 0%;
+    padding-left: 5%;
+    padding-right: 5%;
     text-align: justify;
   }
 }
@@ -152,11 +152,14 @@ g.parameter-value > text {
 }
 
 /* start tree area */
-#tree-vis {
-  padding-left: 25%;
-  padding-right: 25%;
-  /* background-color: black; */
-  max-height: fit-content;
+div#tree-vis {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div#tree-vis > svg {
+  align-self: center;
 }
 
 div#reset-button {
@@ -194,37 +197,60 @@ section#part3 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 1000px;
+  min-height: 1200px;
 }
 
 div#dropdown-menu {
-  display: inline;
-  transform: translateY(18%);
-}
-
-div#donut-chart {
-  transform: translateX(8%) translateY(9%);
+  /* display: inline; */
+  transform: translateY(9%);
 }
 
 div#info-table {
   border-radius: 5px;
   transform: translateY(9%);
 }
-div#chart-area1 {
-  display: block;
-}
-div#reset-button-container {
+
+div#tooltip {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding-left: 35%;
-  padding-right: 55%;
+}
+div#tooltip > svg {
+  align-self: center;
+}
+
+/* div#chart-area1 {
+  display: block;
+} */
+
+div#chart-area1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div#chart-area1 > svg {
+  align-self: center;
+}
+
+/* div#reset-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+div#reset-button-container {
+  padding-left: 40%;
+  padding-right: 40%;
+  align-self: center;
+  /* max-width: 50%; */
 }
 /* end plate area */
 
 /* start more-facts */
 
-section#part4 {
+/* section#part4 {
   min-height: 1000px;
-}
+} */
 div#img-container {
   justify-content: center;
   padding-left: 35%;

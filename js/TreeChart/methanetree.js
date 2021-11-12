@@ -43,7 +43,7 @@ MethaneTree.prototype.initVis = function () {
 
   // console.log(vis.filteredData);
 
-  vis.margin = { top: 0, right: 20, bottom: 20, left: 0 };
+  vis.margin = { top: 0, right: 20, bottom: 20, left: 20 };
 
   vis.colorScale = d3.scaleLinear().range([
     "#fee3d6",
@@ -63,9 +63,11 @@ MethaneTree.prototype.initVis = function () {
   //   var width = positionInfo.right;
 
   //   console.log(positionInfo);
+  vis.maxWidth = Math.min(window.innerWidth, 520);
+  vis.maxHeight = Math.min(500, window.innerWidth);
 
-  (vis.width = 660 - vis.margin.left - vis.margin.right),
-    (vis.height = 660 - vis.margin.top - vis.margin.bottom);
+  vis.width = vis.maxWidth - vis.margin.left - vis.margin.right;
+  vis.height = vis.maxHeight - vis.margin.top - vis.margin.bottom;
 
   // SVG drawing area
   vis.svg = d3

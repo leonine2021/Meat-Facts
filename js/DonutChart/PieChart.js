@@ -13,13 +13,15 @@ PieChart = function (_parentElement, _data) {
 PieChart.prototype.initVis = function () {
   var vis = this;
 
-  vis.margin = { top: 40, right: 5, bottom: 20, left: 20 };
+  vis.margin = { top: 20, right: 20, bottom: 20, left: 20 };
 
-  (vis.width = 500 - vis.margin.left - vis.margin.right),
-    (vis.height = 500 - vis.margin.top - vis.margin.bottom);
-  (vis.radius = Math.min(vis.width, vis.height) / 2),
-    (vis.width1 = 600 - vis.margin.left - vis.margin.right),
-    (vis.height1 = 50 - vis.margin.top - vis.margin.bottom);
+  vis.maxWidth = Math.min(window.innerWidth, 500);
+
+  vis.width = vis.maxWidth - vis.margin.left - vis.margin.right;
+  vis.height = vis.maxWidth - vis.margin.top - vis.margin.bottom;
+  vis.radius = Math.min(vis.width, vis.height) / 2;
+  // (vis.width1 = 600 - vis.margin.left - vis.margin.right),
+  // (vis.height1 = 50 - vis.margin.top - vis.margin.bottom);
   /*
     // Dropdown Menu
     */
