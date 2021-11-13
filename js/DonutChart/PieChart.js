@@ -232,16 +232,18 @@ PieChart.prototype.updateVis = function () {
     vis.pie_group
       .append("text")
       .attr("x", 0)
-      .attr("y", vis.height - 215)
+      .attr("y", vis.height - 165)
       .attr("text-anchor", "middle")
+      .attr("font-size", "10pt")
       .text("Total weight of food picked: " + vis.sum_food + " kg")
       .attr("id", "weight");
 
     vis.pie_group
       .append("text")
       .attr("x", 0)
-      .attr("y", vis.height - 195)
+      .attr("y", vis.height - 145)
       .attr("text-anchor", "middle")
+      .attr("font-size", "10pt")
       .text("Click on the pie chart to see the emission breakdown.")
       .attr("id", "instruction");
 
@@ -286,6 +288,7 @@ PieChart.prototype.updateVis = function () {
       .append("tspan")
       .attr("x", 0)
       .attr("dy", 10)
+      .attr("font-size", "10pt")
       .attr("text-anchor", "middle")
       .text("Total Emission: ");
 
@@ -293,6 +296,7 @@ PieChart.prototype.updateVis = function () {
       .append("tspan")
       .attr("x", 0)
       .attr("dy", 20)
+      .attr("font-size", "10pt")
       .text(vis.sum + "(kg CO2 eq)");
   } else {
     d3.select(".total-emission").remove();

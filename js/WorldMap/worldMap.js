@@ -24,7 +24,7 @@ WorldVis.prototype.initVis = function () {
 
   // console.log(window.innerWidth);
   // vis.width = 800;
-  vis.width = Math.min(window.innerWidth, 800);
+  vis.width = Math.min(window.innerWidth, 500);
   vis.height = Math.min(500, window.innerWidth);
 
   vis.innerWidth = vis.width - vis.margin.left - vis.margin.right;
@@ -226,7 +226,7 @@ WorldVis.prototype.initVis = function () {
     .min(1961)
     .max(2017)
     .step(1)
-    .width(vis.innerWidth / 2)
+    .width((vis.innerWidth * 2) / 3)
     .tickFormat(d3.format("d"))
     .tickValues(years)
     .default(1961)
@@ -242,7 +242,7 @@ WorldVis.prototype.initVis = function () {
     .attr("width", vis.innerWidth)
     .attr("height", 100)
     .append("g")
-    .attr("transform", `translate(${vis.innerWidth / 4},30)`);
+    .attr("transform", `translate(${vis.innerWidth / 6},30)`);
 
   gTime.call(sliderTime);
 

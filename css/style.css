@@ -75,8 +75,8 @@ a.nav-link {
   position: fixed;
   width: 100%;
   top: -1px;
-  left: 0;
-  right: 0;
+  /* left: 0;
+  right: 0; */
   background: white;
   box-shadow: var(--box-shadow);
   z-index: 999;
@@ -94,7 +94,7 @@ a.nav-link {
 .site-main .site-banner .row h1 > span {
   display: block;
   text-align: center;
-  padding: 0 20rem;
+  /* padding: 0 20rem; */
   font-size: 60px;
   /* transform: translateX(-20px); */
 }
@@ -163,8 +163,8 @@ div#tree-vis > svg {
 }
 
 div#reset-button {
-  padding-left: 45%;
-  padding-right: 45%;
+  padding-left: 40%;
+  padding-right: 40%;
 }
 div#compare-chart {
   padding-left: 35%;
