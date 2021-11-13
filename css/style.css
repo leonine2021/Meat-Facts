@@ -103,10 +103,10 @@ a.nav-link {
 }
 
 section#home {
-  background: url(../img/meat_vocano.jpg) no-repeat center 50px fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  background: url(../img/meat_vocano.jpg) no-repeat center 50px fixed;
   background-size: cover;
   min-height: 800px;
 }
@@ -195,10 +195,10 @@ p.title {
 
 /* start plate area */
 section#part3 {
-  background: url(../img/plate.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  background: url(../img/plate.jpg) no-repeat center center fixed;
   background-size: cover;
   min-height: 1200px;
 }
