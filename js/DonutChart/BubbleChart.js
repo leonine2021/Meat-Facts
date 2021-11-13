@@ -13,7 +13,7 @@ BubbleChart.prototype.initVis = function () {
   vis.margin = { top: 80, right: 20, bottom: 30, left: 20 };
 
   vis.maxWidth = Math.min(window.innerWidth, 300);
-  vis.maxHeight = Math.min(window.innerWidth, 600);
+  vis.maxHeight = 500;
 
   vis.width = vis.maxWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.maxHeight - vis.margin.top - vis.margin.bottom;

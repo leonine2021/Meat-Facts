@@ -221,10 +221,10 @@ PieChart.prototype.updateVis = function () {
     event.stopPropagation();
   });
 
-  $("#dropdown-menu").click(function (event) {
-    console.log("prop stops");
-    event.stopPropagation();
-  });
+  // $("#dropdown-menu").click(function (event) {
+  //   console.log("prop stops");
+  //   event.stopPropagation();
+  // });
 
   if (vis.displayData.length != 0) {
     d3.select("#weight").remove();
