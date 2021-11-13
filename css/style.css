@@ -32,6 +32,9 @@ div.row.desc > p {
     padding-right: 5%;
     text-align: justify;
   }
+  g.tick > text {
+    font-size: 4pt;
+  }
 }
 
 /* start nav bar */
@@ -197,17 +200,17 @@ section#part3 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 1200px;
+  min-height: 1000px;
 }
 
 div#dropdown-menu {
   /* display: inline; */
-  transform: translateY(9%);
+  transform: translateY(18%);
 }
 
 div#info-table {
   border-radius: 5px;
-  transform: translateY(9%);
+  transform: translateY(18%);
 }
 
 div#tooltip {
@@ -224,6 +227,7 @@ div#tooltip > svg {
 } */
 
 div#chart-area1 {
+  transform: translateY(18%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -239,6 +243,7 @@ div#chart-area1 > svg {
   justify-content: center;
 } */
 div#reset-button-container {
+  padding-top: 20%;
   padding-left: 40%;
   padding-right: 40%;
   align-self: center;
